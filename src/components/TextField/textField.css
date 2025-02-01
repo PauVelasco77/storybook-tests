@@ -7,21 +7,23 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   outline: none;
   border: 1px solid #e5e7eb;
-  transition: all 0.3s ease-in-out;
   color: #333333;
   font-size: 1rem;
   line-height: var(calc(1.5 / 1));
+  transition: all 0.3s ease-in-out;
 }
 
-.text-field:hover,
 .text-field:focus {
   border-color: #555ab9;
-}
-
-.text-field:focus {
   box-shadow: 0 0 0 3px rgba(85, 90, 185, 0.2);
 }
 
 .text-field::placeholder {
   opacity: 0.5;
+}
+
+.text-field:hover::placeholder,
+.text-field:focus::placeholder {
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
 }
