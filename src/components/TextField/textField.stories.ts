@@ -14,8 +14,16 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Text: Story = {
   args: {
     placeholder: "Enter your name",
+    type: "text",
+  },
+};
+
+export const Password: Story = {
+  args: {
+    placeholder: "Enter your password",
+    type: "password",
   },
 };
