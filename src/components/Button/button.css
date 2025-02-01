@@ -3,8 +3,8 @@
   background-color: var(--color-primary);
   color: --text-on-primary;
   font-size: 1rem;
-  line-height: 1.25rem;
-  font-weight: 500;
+  line-height: var(calc(1.5 / 1));
+  font-weight: bold;
   width: 100%;
   border-radius: 0.5rem;
   text-transform: uppercase;
