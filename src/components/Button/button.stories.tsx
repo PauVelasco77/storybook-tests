@@ -26,3 +26,13 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
+
+export const Loading: Story = {
+  args: {
+    children: "I am a button",
+    isLoading: true,
+    onClick: () => {
+      console.log("I am loading");
+    },
+  },
+};
