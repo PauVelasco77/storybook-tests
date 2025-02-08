@@ -1,42 +1,52 @@
 import {fireEvent, screen} from "@testing-library/react";
-import {test, expect, vi} from "vitest";
+import {test, expect, vi, describe, beforeEach} from "vitest";
 import {composeStories} from "@storybook/react";
 
 import * as stories from "./button.stories"; // 👈 Our stories imported here.
 
-const {Disabled} = composeStories(stories);
+const onClickMock = vi.fn();
 
-test("Check if the action onClick is called", async () => {
-  const onClickMock = vi.fn();
-
-  await Disabled.run({
-    args: {
-      onClick: onClickMock,
-      children: "Submit",
-      type: "button",
-    },
-  });
-  const buttonElement = screen.getByRole("button");
-
-  fireEvent.click(buttonElement);
-
-  expect(onClickMock).toHaveBeenCalled();
+const {Disabled, Primary, Loading} = composeStories(stories, {
+  args: {
+    onClick: onClickMock,
+  },
 });
 
-test("Check if the action onClick is not called", async () => {
-  const onClickMock = vi.fn();
+beforeEach(() => {
+  vi.clearAllMocks();
+});
 
-  await Disabled.run({
-    args: {
-      onClick: onClickMock,
-      children: "Submit",
-      type: "button",
-      disabled: true,
-    },
+describe("Given a Button component", () => {
+  describe("When the button is clicked", () => {
+    test("Then the action onClick should be called", async () => {
+      await Primary.run();
+      const buttonElement = screen.getByRole("button");
+
+      fireEvent.click(buttonElement);
+
+      expect(onClickMock).toHaveBeenCalled();
+    });
   });
-  const buttonElement = screen.getByRole("button");
 
-  fireEvent.click(buttonElement);
+  describe("When the button is disabled and clicked", () => {
+    test("Then the action onClick should not be called", async () => {
+      await Disabled.run();
+      const buttonElement = screen.getByRole("button");
 
-  expect(onClickMock).not.toHaveBeenCalled();
+      fireEvent.click(buttonElement);
+
+      expect(onClickMock).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("When the button is loading and clicked", () => {
+    test("Then the action onClick should not be called", async () => {
+      await Loading.run();
+      const buttonElement = screen.getByRole("button");
+
+      fireEvent.click(buttonElement);
+
+      expect(onClickMock).not.toHaveBeenCalled();
+    });
+  });
 });
