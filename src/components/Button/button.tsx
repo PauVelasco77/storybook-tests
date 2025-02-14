@@ -1,29 +1,48 @@
-import {ButtonHTMLAttributes} from "react";
-import {Loader2} from "lucide-react";
+import {ComponentPropsWithoutRef} from "react";
 import "./button.css";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+// Define button variants and their corresponding styles
+const VARIANTS = {
+  filled: "button--filled",
+  outlined: "button--outlined",
+  text: "button--text",
+  elevated: "button--elevated",
+  tonal: "button--tonal",
+} as const;
+
+type ButtonVariant = keyof typeof VARIANTS;
+
+const COLORS = {
+  primary: "button--primary",
+  secondary: "button--secondary",
+  tertiary: "button--tertiary",
+  error: "button--error",
+} as const;
+
+type ButtonColors = keyof typeof COLORS;
+
+interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   isLoading?: boolean;
+  variant?: ButtonVariant;
+  color?: ButtonColors;
 }
 
 export default function Button({
-  isLoading,
+  isLoading = false,
   children,
-  className,
+  className = "",
   disabled,
+  variant = "filled",
+  color = "primary",
   ...props
 }: ButtonProps) {
+  const baseStyles = ["button", VARIANTS[variant], COLORS[color], className]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <button
-      className={`button ${isLoading ? "button__loading" : ""} ${
-        className || ""
-      }`}
-      disabled={disabled || isLoading}
-      {...props}>
-      {isLoading && <Loader2 className='button--loader' />}
-      <span className={isLoading ? "button--hidden-content" : ""}>
-        {children}
-      </span>
+    <button className={baseStyles} disabled={disabled || isLoading} {...props}>
+      <div className='button__content'>{children}</div>
     </button>
   );
 }
