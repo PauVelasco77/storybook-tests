@@ -1,6 +1,7 @@
 import {ComponentPropsWithoutRef} from "react";
-import "./button.css";
 import Spinner from "../../assets/icons/Spinner/spinner";
+import cx from "classnames";
+import "./button.css";
 
 // Define button variants and their corresponding styles
 const VARIANTS = {
@@ -37,19 +38,20 @@ export default function Button({
   color = "primary",
   ...props
 }: ButtonProps) {
-  const baseStyles = ["button", VARIANTS[variant], COLORS[color], className]
-    .filter(Boolean)
-    .join(" ");
+  const buttonClassNames = cx(
+    "button",
+    VARIANTS[variant],
+    COLORS[color],
+    className
+  );
+  const buttonContentClassNames = cx("button__content", {
+    "button__content--loading": isLoading,
+  });
 
   return (
-    <button className={baseStyles} disabled={disabled} {...props}>
+    <button className={buttonClassNames} disabled={disabled} {...props}>
       {isLoading && <Spinner className='button__loader' />}
-      <div
-        className={`button__content ${
-          isLoading ? "button__content--loading" : ""
-        }`}>
-        {children}
-      </div>
+      <div className={buttonContentClassNames}>{children}</div>
     </button>
   );
 }
