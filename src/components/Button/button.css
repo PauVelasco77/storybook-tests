@@ -1,42 +1,3 @@
-.button {
-  /* Button Theme Variables */
-  --button-border-radius: 6.25rem;
-  --button-shadow-small: 0px 1px 2px hsla(0, 0%, 0%, 0.3),
-    0px 1px 3px 1px hsla(0, 0%, 0%, 0.15);
-  --button-shadow-large: 0px 1px 2px hsla(0, 0%, 0%, 0.3),
-    0px 2px 6px 2px hsla(0, 0%, 0%, 0.15);
-
-  /* Base Button Styles */
-  appearance: none;
-  border: none;
-  display: inline-flex;
-  height: 2.5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
-  transition: var(--button-transition);
-  cursor: pointer;
-  background-color: transparent;
-  border-radius: var(--button-border-radius);
-}
-
-.button:disabled {
-  cursor: not-allowed;
-}
-
-/* Button Content */
-.button__content {
-  display: flex;
-  padding: 0.625rem 1.5rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  flex: 1 0 0;
-  align-self: stretch;
-}
-
 /* Color Variants */
 .button--primary,
 .button--secondary,
@@ -79,6 +40,61 @@
   --button-on-container: var(--color-on-error-container);
   --button-opacity-08: var(--color-error-opacity-08);
   --button-opacity-12: var(--color-error-opacity-12);
+}
+
+.button {
+  /* Button Theme Variables */
+  --button-border-radius: 6.25rem;
+  --button-shadow-small: 0px 1px 2px hsla(0, 0%, 0%, 0.3),
+    0px 1px 3px 1px hsla(0, 0%, 0%, 0.15);
+  --button-shadow-large: 0px 1px 2px hsla(0, 0%, 0%, 0.3),
+    0px 2px 6px 2px hsla(0, 0%, 0%, 0.15);
+
+  /* Base Button Styles */
+  appearance: none;
+  border: none;
+  display: inline-flex;
+  height: 2.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  transition: var(--button-transition);
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: var(--button-border-radius);
+  position: relative;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button:has(.button__loader) {
+  pointer-events: none;
+}
+
+.button__loader {
+  position: absolute;
+  animation: spin 1s linear infinite;
+  max-height: 2rem;
+  max-width: 2rem;
+}
+
+/* Button Content */
+.button__content {
+  display: flex;
+  padding: 0.625rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.button__content.button__content--loading {
+  visibility: hidden;
 }
 
 /* Style Variants */

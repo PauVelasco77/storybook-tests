@@ -1,5 +1,6 @@
 import {ComponentPropsWithoutRef} from "react";
 import "./button.css";
+import Spinner from "../../assets/icons/Spinner/spinner";
 
 // Define button variants and their corresponding styles
 const VARIANTS = {
@@ -41,8 +42,14 @@ export default function Button({
     .join(" ");
 
   return (
-    <button className={baseStyles} disabled={disabled || isLoading} {...props}>
-      <div className='button__content'>{children}</div>
+    <button className={baseStyles} disabled={disabled} {...props}>
+      {isLoading && <Spinner className='button__loader' />}
+      <div
+        className={`button__content ${
+          isLoading ? "button__content--loading" : ""
+        }`}>
+        {children}
+      </div>
     </button>
   );
 }
