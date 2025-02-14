@@ -1,9 +1,88 @@
 :root {
-  --color-primary: #4f46e5;
-  --border-color: #e5e7eb;
+  /* Primary Colors */
+  --color-primary: hsl(260, 25%, 45%);
+  --color-on-primary: hsl(0, 0%, 100%);
+  --color-primary-container: hsl(270, 100%, 93%);
+  --color-on-primary-container: hsl(260, 44%, 39%);
 
-  --text-color: #333333;
-  --text-on-primary: #ffffff;
+  /* Secondary Colors */
+  --color-secondary: hsl(260, 11%, 40%);
+  --color-on-secondary: hsl(0, 0%, 100%);
+  --color-secondary-container: hsl(270, 50%, 92%);
+  --color-on-secondary-container: hsl(260, 15%, 32%);
+
+  /* Tertiary Colors */
+  --color-tertiary: hsl(340, 21%, 40%);
+  --color-on-tertiary: hsl(0, 0%, 100%);
+  --color-tertiary-container: hsl(340, 100%, 90%);
+  --color-on-tertiary-container: hsl(340, 26%, 30%);
+
+  /* Error Colors */
+  --color-error: hsl(3, 73%, 43%);
+  --color-on-error: hsl(0, 0%, 100%);
+  --color-error-container: hsl(4, 71%, 92%);
+  --color-on-error-container: hsl(3, 60%, 33%);
+
+  /* Surface Colors */
+  --color-surface: hsl(290, 100%, 99%);
+  --color-surface-bright: hsl(290, 100%, 99%);
+  --color-surface-dim: hsl(280, 15%, 87%);
+  --color-surface-container: hsl(290, 33%, 95%);
+  --color-surface-container-highest: hsl(280, 25%, 91%);
+  --color-surface-container-high: hsl(290, 25%, 94%);
+  --color-surface-container-low: hsl(290, 33%, 97%);
+  --color-surface-container-lowest: hsl(0, 0%, 100%);
+
+  /* Text & Outline Colors */
+  --color-on-surface: hsl(270, 7%, 12%);
+  --color-on-surface-variant: hsl(270, 7%, 30%);
+  --color-outline: hsl(270, 5%, 48%);
+  --color-outline-variant: hsl(270, 10%, 83%);
+
+  /* Dynamic Opacity Variations */
+  --color-primary-opacity-08: color-mix(
+    in srgb,
+    var(--color-primary) 8%,
+    transparent
+  );
+  --color-primary-opacity-12: color-mix(
+    in srgb,
+    var(--color-primary) 12%,
+    transparent
+  );
+
+  --color-secondary-opacity-08: color-mix(
+    in srgb,
+    var(--color-secondary) 8%,
+    transparent
+  );
+  --color-secondary-opacity-12: color-mix(
+    in srgb,
+    var(--color-secondary) 12%,
+    transparent
+  );
+
+  --color-tertiary-opacity-08: color-mix(
+    in srgb,
+    var(--color-tertiary) 8%,
+    transparent
+  );
+  --color-tertiary-opacity-12: color-mix(
+    in srgb,
+    var(--color-tertiary) 12%,
+    transparent
+  );
+
+  --color-error-opacity-08: color-mix(
+    in srgb,
+    var(--color-error) 8%,
+    transparent
+  );
+  --color-error-opacity-12: color-mix(
+    in srgb,
+    var(--color-error) 12%,
+    transparent
+  );
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
