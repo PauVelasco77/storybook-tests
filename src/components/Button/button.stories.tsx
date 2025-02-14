@@ -8,6 +8,17 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  argTypes: {
+    variant: {
+      control: {type: "radio"},
+    },
+    isLoading: {
+      control: {type: "boolean"},
+    },
+    className: {
+      control: {disable: true},
+    },
+  },
   tags: ["autodocs"],
 } satisfies Meta<typeof Button>;
 
