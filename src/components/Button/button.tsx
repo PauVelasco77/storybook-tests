@@ -26,12 +26,11 @@ export default function Button({
 }: ButtonProps) {
   const buttonClassNames = cx(
     "button",
+    "label-lg",
     BUTTON_VARIANTS[variant],
     BUTTON_COLORS[color],
     className,
-    {
-      "button--loading": isLoading,
-    }
+    {"button--loading": isLoading}
   );
   const buttonContentClassNames = cx("button__content");
   const isDisabled = disabled || isLoading;
