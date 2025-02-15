@@ -28,14 +28,16 @@ export default function Button({
     "button",
     BUTTON_VARIANTS[variant],
     BUTTON_COLORS[color],
-    className
+    className,
+    {
+      "button--loading": isLoading,
+    }
   );
-  const buttonContentClassNames = cx("button__content", {
-    "button__content--loading": isLoading,
-  });
+  const buttonContentClassNames = cx("button__content");
+  const isDisabled = disabled || isLoading;
 
   return (
-    <button className={buttonClassNames} disabled={disabled} {...props}>
+    <button className={buttonClassNames} disabled={isDisabled} {...props}>
       {isLoading && <Spinner className='button__loader' />}
       <div className={buttonContentClassNames}>{children}</div>
     </button>

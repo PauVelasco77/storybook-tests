@@ -9,6 +9,9 @@ const meta = {
     layout: "centered",
   },
   argTypes: {
+    onClick: {
+      action: "clicked",
+    },
     variant: {
       control: {type: "radio"},
     },
@@ -25,7 +28,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Base: Story = {
   args: {
     children: "I am a button",
   },
@@ -42,8 +45,5 @@ export const Loading: Story = {
   args: {
     children: "I am a button",
     isLoading: true,
-    onClick: () => {
-      console.log("I am loading");
-    },
   },
 };

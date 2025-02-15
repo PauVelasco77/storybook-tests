@@ -78,7 +78,7 @@
 }
 
 .button:has(.button__loader) {
-  pointer-events: none;
+  cursor: wait;
 }
 
 .button__loader {
@@ -99,11 +99,11 @@
   align-self: stretch;
 }
 
-.button__content.button__content--loading {
+.button--loading .button__content {
   visibility: hidden;
 }
 
-/* Style Variants */
+/* FILLED */
 .button--filled {
   background: var(--button-color);
   color: var(--button-on-color);
@@ -113,10 +113,12 @@
   box-shadow: var(--button-shadow-small);
 }
 
-.button--filled:disabled {
+.button--filled:disabled:not(:has(.button__loader)) {
   color: var(--button-disabled-text);
   background-color: var(--button-opacity-12);
 }
+
+/* OUTLINED */
 
 .button--outlined {
   border: 0.06rem solid var(--color-outline);
@@ -132,9 +134,11 @@
   background-color: var(--button-opacity-12);
 }
 
-.button--outlined:disabled {
+.button--outlined:disabled:not(:has(.button__loader)) {
   color: var(--button-disabled-text);
 }
+
+/* TEXT */
 
 .button--text {
   color: var(--button-color);
@@ -148,9 +152,11 @@
   background-color: var(--button-opacity-12);
 }
 
-.button--text:disabled {
+.button--text:disabled:not(:has(.button__loader)) {
   color: var(--button-disabled-text);
 }
+
+/* ELEVATED */
 
 .button--elevated {
   color: var(--button-color);
@@ -167,11 +173,13 @@
   background-color: var(--button-opacity-12);
 }
 
-.button--elevated:disabled {
+.button--elevated:disabled:not(:has(.button__loader)) {
   color: var(--button-disabled-text);
   background-color: var(--button-opacity-12);
   box-shadow: none;
 }
+
+/* TONAL */
 
 .button--tonal {
   background-color: var(--button-container);
@@ -186,7 +194,7 @@
   filter: brightness(0.88);
 }
 
-.button--tonal:disabled {
+.button--tonal:disabled:not(:has(.button__loader)) {
   background-color: inherit;
   opacity: 0.12;
 }
