@@ -2,31 +2,17 @@ import {ComponentPropsWithoutRef} from "react";
 import Spinner from "../../assets/icons/Spinner/spinner";
 import cx from "classnames";
 import "./button.css";
-
-// Define button variants and their corresponding styles
-const VARIANTS = {
-  filled: "button--filled",
-  outlined: "button--outlined",
-  text: "button--text",
-  elevated: "button--elevated",
-  tonal: "button--tonal",
-} as const;
-
-type ButtonVariant = keyof typeof VARIANTS;
-
-const COLORS = {
-  primary: "button--primary",
-  secondary: "button--secondary",
-  tertiary: "button--tertiary",
-  error: "button--error",
-} as const;
-
-type ButtonColors = keyof typeof COLORS;
+import {
+  ButtonColorType,
+  ButtonVariantType,
+  BUTTON_COLORS,
+  BUTTON_VARIANTS,
+} from "./button.types";
 
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   isLoading?: boolean;
-  variant?: ButtonVariant;
-  color?: ButtonColors;
+  variant?: ButtonVariantType;
+  color?: ButtonColorType;
 }
 
 export default function Button({
@@ -40,8 +26,8 @@ export default function Button({
 }: ButtonProps) {
   const buttonClassNames = cx(
     "button",
-    VARIANTS[variant],
-    COLORS[color],
+    BUTTON_VARIANTS[variant],
+    BUTTON_COLORS[color],
     className
   );
   const buttonContentClassNames = cx("button__content", {
