@@ -1,13 +1,13 @@
 import {ComponentPropsWithoutRef} from "react";
 import Spinner from "../../assets/icons/Spinner/spinner";
-import cx from "classnames";
-import "./button.css";
 import {
   ButtonColorType,
   ButtonVariantType,
   BUTTON_COLORS,
   BUTTON_VARIANTS,
 } from "./button.types";
+import cx from "classnames";
+import "./button.css";
 
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   isLoading?: boolean;
