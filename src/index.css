@@ -1,4 +1,25 @@
 :root {
+  /* Typography */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Label Typography */
+  --label-large-font: "Roboto", sans-serif;
+  --label-large-size: 0.875rem;
+  --label-large-line-height: 1.25rem;
+  --label-large-tracking: 0.006rem;
+
+  --label-medium-font: "Roboto", sans-serif;
+  --label-medium-size: 0.75rem;
+  --label-medium-line-height: 1rem;
+  --label-medium-tracking: 0.0031rem;
+
+  --label-small-font: "Roboto", sans-serif;
+  --label-small-size: 0.625rem;
+  --label-small-line-height: 1rem;
+  --label-small-tracking: 0.0031rem;
+
   /* Primary Colors */
   --color-primary: hsl(260, 25%, 45%);
   --color-on-primary: hsl(0, 0%, 100%);
