@@ -1,50 +1,90 @@
-# React + TypeScript + Vite
+# UI Component Library with Storybook and Testing
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ This project demonstrates component testing through Storybook stories, providing a practical approach to testing React components in isolation. Built with React 19, TypeScript, Vite, and Storybook 8, it showcases modern best practices for component development and unit testing.
 
-Currently, two official plugins are available:
+  The repository features a structured component architecture with reusable UI components like Button, TextField, and LoginForm, each with dedicated story files that serve as both documentation and test fixtures. This approach illustrates how Storybook stories can be leveraged not just for visual development but as a foundation for robust automated testing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- **Modern Stack**: React 19, TypeScript 5.7, Vite 6
+- **Component Documentation**: Storybook 8 with addons
+- **Testing**: Vitest with React Testing Library
+- **Type Safety**: Strong TypeScript typing
+- **Accessibility**: ARIA attributes and semantic HTML
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🔧 Components
 
-- Configure the top-level `parserOptions` property like this:
+The library currently includes:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Button**: Versatile button with multiple variants, colors, loading state
+- **TextField**: Form input field with validation and error states
+- **LoginForm**: Validation form with email/password fields
+
+## 🏗️ Project Structure
+
+```
+src/
+├── assets/            # Icons and shared assets
+├── components/        # UI components
+│   ├── Button/        
+│   │   ├── button.tsx
+│   │   ├── button.css
+│   │   ├── button.types.ts
+│   │   ├── button.stories.tsx
+│   │   └── button.test.tsx
+│   ├── TextField/
+│   └── LoginForm/
+└── styles/            # Global styles
+    ├── colors.css
+    ├── reset.css
+    └── typography.css
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 📋 Commands
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+# Install dependencies
+yarn install
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+# Start Storybook development server
+yarn storybook
+
+# Run tests
+yarn test
+
+# Run tests with coverage
+yarn coverage
+
+# Lint code
+yarn lint
+
+# Build Storybook for production
+yarn build-storybook
 ```
+
+## 🧪 Testing
+
+Tests use Vitest with React Testing Library and follow the Given/When/Then pattern:
+
+```typescript
+describe("Given a Button component", () => {
+  describe("When the button is clicked", () => {
+    test("Then the action onClick should be called", async () => {
+      // Test implementation
+    });
+  });
+});
+```
+
+## 🎨 Design System
+
+The components follow consistent design patterns:
+- Typography classes (body-lg, label-md, etc.)
+- Color scheme with primary/secondary/tertiary
+- Variants like filled, outlined, text, elevated, tonal
+
+## 📚 Resource
+
+- [Material Design](https://m3.material.io/)
+- [Storybook Unit Testing](https://storybook.js.org/docs/writing-tests/import-stories-in-tests/stories-in-unit-tests)
+- [Kent C. Dodds - how to type a react form on submit handler](https://www.epicreact.dev/how-to-type-a-react-form-on-submit-handler)
