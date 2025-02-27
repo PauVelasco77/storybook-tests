@@ -3,7 +3,7 @@ import {test, expect, vi, describe, beforeEach} from "vitest";
 import {composeStories} from "@storybook/react";
 import {userEvent} from "@testing-library/user-event";
 
-import * as stories from "./button.stories"; // 👈 Our stories imported here.
+import * as stories from "./button.stories";
 
 const onClickMock = vi.fn();
 
