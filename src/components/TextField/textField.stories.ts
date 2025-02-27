@@ -8,6 +8,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  argTypes: {},
   tags: ["autodocs"],
 } satisfies Meta<typeof TextField>;
 
@@ -16,14 +17,20 @@ type Story = StoryObj<typeof meta>;
 
 export const Text: Story = {
   args: {
+    labelText: "Name",
     placeholder: "Enter your name",
     type: "text",
+    id: "name",
+    errorText:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi doloremque veniam, harum praesentium facere perferendis ut eveniet adipisci reiciendis sed! Ipsum dolor magnam officia consectetur quos sint quibusdam, quaerat expedita!",
   },
 };
 
 export const Password: Story = {
   args: {
+    labelText: "Password",
     placeholder: "Enter your password",
     type: "password",
+    id: "password",
   },
 };
