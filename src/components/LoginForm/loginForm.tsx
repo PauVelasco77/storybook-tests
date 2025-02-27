@@ -38,9 +38,9 @@ export default function LoginForm({onSubmitLogin, ...props}: LoginFormProps) {
     <form
       className='login-form'
       ref={formRef}
+      role='form'
       {...props}
-      onSubmit={handleSubmit}
-      noValidate>
+      onSubmit={handleSubmit}>
       <h2 className='body-lg'>Login</h2>
       <TextField
         id={LOGIN_FORM_FIELDS_IDS.email}
