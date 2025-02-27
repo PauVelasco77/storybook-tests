@@ -3,7 +3,7 @@ import {expect, describe, test} from "vitest";
 import {composeStories} from "@storybook/react";
 import {userEvent} from "@testing-library/user-event";
 
-import * as stories from "./textField.stories"; // 👈 Our stories imported here.
+import * as stories from "./textField.stories";
 import {TEXT_FIELD_TYPES} from "./textField.types";
 
 const {Text, Password} = composeStories(stories);

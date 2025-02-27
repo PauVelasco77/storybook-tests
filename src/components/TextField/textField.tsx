@@ -65,6 +65,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {errorText && (
           <p
             id={`${uniqueId}-description`}
+            role='alert'
             className={cx("text-field__helper-text", "body-sm", {
               "text-field__helper-text--error": errorText,
               "sr-only": hideError,
