@@ -6,9 +6,8 @@ import {TextFieldTypeType} from "./textField.types";
 interface TextFieldProps
   extends Omit<React.ComponentPropsWithoutRef<"input">, "type"> {
   type: TextFieldTypeType;
-  labelText: string;
+  label: string;
   errorText?: string;
-  required?: boolean;
   hideLabel?: boolean;
   hideError?: boolean;
 }
@@ -16,7 +15,7 @@ interface TextFieldProps
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
-      labelText,
+      label,
       errorText,
       hideError = false,
       required = false,
@@ -24,12 +23,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       id,
       className,
       disabled,
+      type,
       ...rest
     },
     ref
   ) => {
-    const uniqueId =
-      id || `text-field-${Math.random().toString(36).slice(2, 11)}`;
+    const uniqueId = id || crypto.randomUUID();
 
     const textFieldClassNames = cx(
       "text-field",
@@ -46,15 +45,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           <label
             className={cx("label-md", {"sr-only": hideLabel})}
             htmlFor={uniqueId}>
-            {labelText}
-            {required && (
-              <span className='text-field__required' aria-hidden='true'>
-                *
-              </span>
-            )}
+            {label}
+            {required && <span className='text-field__required'>*</span>}
           </label>
 
           <input
+            type={type}
             ref={ref}
             id={uniqueId}
             className='body-lg'
