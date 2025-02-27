@@ -18,7 +18,7 @@ interface ButtonProps extends ComponentPropsWithRef<"button"> {
 export default function Button({
   isLoading = false,
   children,
-  className = "",
+  className,
   disabled,
   variant = "filled",
   color = "primary",
