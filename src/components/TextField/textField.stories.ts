@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Text: Story = {
   args: {
-    labelText: "Name",
+    label: "Name",
     placeholder: "Enter your name",
     type: "text",
     id: "name",
@@ -28,7 +28,7 @@ export const Text: Story = {
 
 export const Password: Story = {
   args: {
-    labelText: "Password",
+    label: "Password",
     placeholder: "Enter your password",
     type: "password",
     id: "password",
