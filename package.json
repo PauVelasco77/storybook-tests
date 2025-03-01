@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
+    "ts:check": "tsc --noEmit",
+    "phoenix": "rm -Rf node_modules yarn.lock && yarn",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest --environment jsdom",
