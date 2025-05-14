@@ -1,5 +1,5 @@
 import {screen} from "@testing-library/react";
-import {test, expect, vi, describe, beforeEach} from "vitest";
+import {test, expect, vi, describe} from "vitest";
 import {composeStories} from "@storybook/react";
 import {userEvent} from "@testing-library/user-event";
 
@@ -11,10 +11,9 @@ const {Base, Disabled, Loading} = composeStories(stories, {
   args: {
     onClick: onClickMock,
   },
-});
-
-beforeEach(() => {
-  vi.clearAllMocks();
+  beforeEach: () => {
+    vi.clearAllMocks();
+  },
 });
 
 describe("Given a Button component", () => {
