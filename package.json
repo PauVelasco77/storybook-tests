@@ -10,7 +10,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest --environment jsdom",
-    "coverage": "vitest --coverage"
+    "coverage": "vitest --coverage",
+    "pretty": "prettier --write ."
+
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.6",
