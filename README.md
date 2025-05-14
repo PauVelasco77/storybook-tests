@@ -44,22 +44,22 @@ src/
 
 ```bash
 # Install dependencies
-yarn install
+npm install
 
 # Start Storybook development server
-yarn storybook
+npm run storybook
 
 # Run tests
-yarn test
+npm run test
 
 # Run tests with coverage
-yarn coverage
+npm run coverage
 
 # Lint code
-yarn lint
+npm run lint
 
 # Build Storybook for production
-yarn build-storybook
+npm run build-storybook
 ```
 
 ## 🧪 Testing

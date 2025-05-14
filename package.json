@@ -6,16 +6,18 @@
   "scripts": {
     "lint": "eslint .",
     "ts:check": "tsc --noEmit",
-    "phoenix": "rm -Rf node_modules yarn.lock && yarn",
+    "phoenix": "rm -Rf node_modules package-lock.json && package.json",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest --environment jsdom",
     "coverage": "vitest --coverage"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.6",
     "classnames": "^2.5.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.6"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
