@@ -1,13 +1,13 @@
-import {screen} from "@testing-library/react";
-import {test, expect, vi, describe} from "vitest";
-import {composeStories} from "@storybook/react";
-import {userEvent} from "@testing-library/user-event";
+import { screen } from '@testing-library/react';
+import { test, expect, vi, describe } from 'vitest';
+import { composeStories } from '@storybook/react';
+import { userEvent } from '@testing-library/user-event';
 
-import * as stories from "./button.stories";
+import * as stories from './button.stories';
 
 const onClickMock = vi.fn();
 
-const {Base, Disabled, Loading} = composeStories(stories, {
+const { Default, Disabled } = composeStories(stories, {
   args: {
     onClick: onClickMock,
   },
@@ -16,14 +16,13 @@ const {Base, Disabled, Loading} = composeStories(stories, {
   },
 });
 
-describe("Given a Button component", () => {
-  // 👇 BUTTON ONCLICK
-  describe("When the button is clicked", () => {
-    test("Then the action onClick should be called", async () => {
-      await Base.run();
-      const onClick = Base.args.onClick;
+describe('Given a Button component', () => {
+  describe('When the button is clicked', () => {
+    test('Then the action onClick should be called', async () => {
+      await Default.run();
+      const onClick = Default.args.onClick;
 
-      const buttonElement = screen.getByRole("button");
+      const buttonElement = screen.getByRole('button');
 
       await userEvent.click(buttonElement);
 
@@ -31,12 +30,12 @@ describe("Given a Button component", () => {
     });
   });
 
-  describe("When the button is disabled and clicked", () => {
-    test("Then the action onClick should not be called", async () => {
+  describe('When the button is disabled and clicked', () => {
+    test('Then the action onClick should not be called', async () => {
       await Disabled.run();
       const onClick = Disabled.args.onClick;
 
-      const buttonElement = screen.getByRole("button");
+      const buttonElement = screen.getByRole('button');
 
       await userEvent.click(buttonElement);
 
@@ -44,127 +43,25 @@ describe("Given a Button component", () => {
     });
   });
 
-  describe("When the button is loading and clicked", () => {
-    test("Then the action onClick should not be called", async () => {
-      await Loading.run();
-      const onClick = Loading.args.onClick;
+  describe('When the button is disabled', () => {
+    test('Then the component should have the disabled attribute', async () => {
+      await Disabled.run();
+      const buttonElement = screen.getByRole('button');
 
-      const buttonElement = screen.getByRole("button");
-
-      await userEvent.click(buttonElement);
-
-      expect(onClick).not.toHaveBeenCalled();
+      expect(buttonElement).toBeDisabled();
+      expect(buttonElement.className).toContain('disabled:opacity-50');
     });
   });
 
-  // 👇 BUTTON LOADING
-  describe("When the button is loading", () => {
-    test("Then the component should have the button--loading className", async () => {
-      const expectedClassName = "button--loading";
+  describe('When the button receives a text as children prop', () => {
+    test('Then the button should render the children prop', async () => {
+      await Default.run();
+      const buttonElement = screen.getByRole('button');
 
-      await Loading.run();
+      const children = screen.getByText(Default.args.children as string);
 
-      const buttonElement = screen.getByRole("button");
-
-      expect(buttonElement).toHaveClass(expectedClassName);
-    });
-  });
-
-  // 👇 BUTTON VARIANTS
-  describe("When the button variant is filled", () => {
-    test("Then the component should have the button--filled className", async () => {
-      const expectedClassName = "button--filled";
-
-      await Base.run({args: {variant: "filled"}});
-
-      const buttonElement = screen.getByRole("button");
-
-      expect(buttonElement).toHaveClass(expectedClassName);
-    });
-  });
-
-  describe("When the button variant is outlined", () => {
-    test("Then the component should have the button--outlined className", async () => {
-      const expectedClassName = "button--outlined";
-
-      await Base.run({args: {variant: "outlined"}});
-
-      const buttonElement = screen.getByRole("button");
-
-      expect(buttonElement).toHaveClass(expectedClassName);
-    });
-  });
-
-  describe("When the button variant is text", () => {
-    test("Then the component should have the button--text className", async () => {
-      const expectedClassName = "button--text";
-
-      await Base.run({args: {variant: "text"}});
-
-      const buttonElement = screen.getByRole("button");
-
-      expect(buttonElement).toHaveClass(expectedClassName);
-    });
-  });
-
-  describe("When the button variant is elevated", () => {
-    test("Then the component should have the button--elevated className", async () => {
-      const expectedClassName = "button--elevated";
-
-      await Base.run({args: {variant: "elevated"}});
-
-      const buttonElement = screen.getByRole("button");
-
-      expect(buttonElement).toHaveClass(expectedClassName);
-    });
-  });
-
-  describe("When the button variant is tonal", () => {
-    test("Then the component should have the button--tonal className", async () => {
-      const expectedClassName = "button--tonal";
-
-      await Base.run({args: {variant: "tonal"}});
-
-      const buttonElement = screen.getByRole("button");
-
-      expect(buttonElement).toHaveClass(expectedClassName);
-    });
-  });
-
-  // 👇 BUTTON COLORS
-  describe("When the button color is primary", () => {
-    test("Then the component should have the button--primary className", async () => {
-      const expectedClassName = "button--primary";
-
-      await Base.run({args: {color: "primary"}});
-
-      const buttonElement = screen.getByRole("button");
-
-      expect(buttonElement).toHaveClass(expectedClassName);
-    });
-  });
-
-  describe("When the button color is secondary", () => {
-    test("Then the component should have the button--secondary className", async () => {
-      const expectedClassName = "button--secondary";
-
-      await Base.run({args: {color: "secondary"}});
-
-      const buttonElement = screen.getByRole("button");
-
-      expect(buttonElement).toHaveClass(expectedClassName);
-    });
-  });
-
-  describe("When the button color is tertiary", () => {
-    test("Then the component should have the button--tertiary className", async () => {
-      const expectedClassName = "button--tertiary";
-
-      await Base.run({args: {color: "tertiary"}});
-
-      const buttonElement = screen.getByRole("button");
-
-      expect(buttonElement).toHaveClass(expectedClassName);
+      expect(buttonElement).toBeInTheDocument();
+      expect(children).toBeInTheDocument();
     });
   });
 });
