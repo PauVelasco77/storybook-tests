@@ -12,11 +12,13 @@
     "test": "vitest --environment jsdom",
     "coverage": "vitest --coverage",
     "pretty": "prettier --write ."
-
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.6",
+    "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.510.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwindcss": "^4.1.6",
@@ -48,7 +50,7 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "rimraf": "^5.0.5",
     "storybook": "^8.6.2",
-    "tailwind-merge": "^3.2.0",
+    "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.25.0",
